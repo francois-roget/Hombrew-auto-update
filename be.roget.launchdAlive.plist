@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Label</key>
+	<string>be.roget.launchdAlive</string>
+	<key>ProgramArguments</key>
+	<array>
+		<string>date</string>
+		<string>+%Y-%m-%d_%H:%M:%S</string>
+	</array>
+	<key>StandardOutPath</key>
+	<string>/Users/fro/scripts/logs/launchdAlive.log</string>
+	<key>StandardErrorPath</key>
+	<string>/Users/fro/scripts/logs/launchdAlive.error.log</string>
+	<key>RunAtLoad</key>
+	<true/>
+	<key>StartInterval</key>
+    	<integer>120</integer>
+</dict>
+</plist>
