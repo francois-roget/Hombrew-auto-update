@@ -10,11 +10,10 @@ echo "----------------------------------"
 echo " Homebrew update checker on " `date +%Y-%m-%d_%H:%M:%S`
 echo $(whoami)
 
-TERM_APP='/Applications/Terminal.app'
+TERM_APP='/Applications/iTerm.app'
 BREW_EXEC='/usr/local/bin/brew'
 TERMINAL_NOTIFIER='/usr/local/bin/terminal-notifier'
-NOTIF_ARGS="-activate com.apple.Terminal -appIcon /Users/fro/scripts/images/homebrew.png"
-
+NOTIF_ARGS="-sound default "
 
 $BREW_EXEC update 2>&1 > /dev/null
 outdated=`$BREW_EXEC outdated | tr ' ' '\n'`
@@ -22,8 +21,8 @@ outdated=`$BREW_EXEC outdated | tr ' ' '\n'`
 if [ -z "$outdated" ] ; then
     if [ -e $TERMINAL_NOTIFIER ]; then
         # No updates available
-        $TERMINAL_NOTIFIER -title "No Homebrew Updates Available" \
-            -message "No updates available yet for any homebrew packages."
+        $TERMINAL_NOTIFIER $NOTIF_ARGS -title "Homebrew Auto Update" \
+            -message "No updates available."
     fi
 else
     # We've got an outdated formula or two
@@ -40,7 +39,8 @@ else
         fi
         # Send to the Nofication Center
         $TERMINAL_NOTIFIER $NOTIF_ARGS \
-            -title "Homebrew Update(s) Available" -message "$message" 
+        -title "Homebrew Auto Update" \
+            -subtitle "Homebrew Update(s) Available" -message "$message"
     fi
 fi
 
