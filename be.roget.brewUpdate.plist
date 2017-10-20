@@ -7,12 +7,12 @@
 		<key>ProgramArguments</key>
 		<array>
 			<string>/bin/bash</string>
-			<string>/usr/local/sbin/brew-update-notifier.sh</string>
+			<string>/usr/local/var/homebrew-auto-update/brew-update-notifier.sh</string>
 		</array>
 		<key>StandardOutPath</key>
-		<string>/var/log/brew-update-notifier.log</string>
+		<string>/usr/local/var/homebrew-auto-update/brew-update-notifier.log</string>
 		<key>StandardErrorPath</key>
-		<string>/var/log/brew-update-notifier.error.log</string>
+		<string>/usr/local/var/homebrew-auto-update/brew-update-notifier.error.log</string>
 		<key>RunAtLoad</key>
 		<true/>
 		<key>StartCalendarInterval</key>

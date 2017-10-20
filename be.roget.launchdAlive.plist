@@ -10,9 +10,9 @@
 			<string>+%Y-%m-%d_%H:%M:%S</string>
 		</array>
 		<key>StandardOutPath</key>
-		<string>/var/log/launchdAlive.log</string>
+		<string>/usr/local/var/homebrew-auto-update/launchdAlive.log</string>
 		<key>StandardErrorPath</key>
-		<string>/var/log/launchdAlive.error.log</string>
+		<string>/usr/local/var/homebrew-auto-update/launchdAlive.error.log</string>
 		<key>RunAtLoad</key>
 		<true/>
 		<key>StartInterval</key>
