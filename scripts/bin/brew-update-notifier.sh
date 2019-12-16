@@ -7,18 +7,17 @@
 #   gem install terminal-notifier
 
 echo "----------------------------------"
-echo " Homebrew update checker on " `date +%Y-%m-%d_%H:%M:%S`
-echo $(whoami)
+echo " Homebrew update checker on " $(date +%Y-%m-%d_%H:%M:%S)
 
 TERM_APP='/Applications/iTerm.app'
 BREW_EXEC='/usr/local/bin/brew'
 TERMINAL_NOTIFIER='/usr/local/bin/terminal-notifier'
 NOTIF_ARGS="-sound default "
 
-$BREW_EXEC update 2>&1 > /dev/null
-outdated=`$BREW_EXEC outdated | tr ' ' '\n'`
+$BREW_EXEC update 2>&1 >/dev/null
+outdated=$($BREW_EXEC outdated | tr ' ' '\n')
 
-if [ -z "$outdated" ] ; then
+if [ -z "$outdated" ]; then
     if [ -e $TERMINAL_NOTIFIER ]; then
         # No updates available
         $TERMINAL_NOTIFIER $NOTIF_ARGS -title "Homebrew Auto Update" \
@@ -29,9 +28,9 @@ else
 
     # Nofity via Notification Center
     if [ -e $TERMINAL_NOTIFIER ]; then
-        lc=$((`echo "$outdated" | wc -l`))
-        outdated=`echo "$outdated" | tail -$lc`
-        message=`echo "$outdated" | head -5`
+        lc=$(($(echo "$outdated" | wc -l)))
+        outdated=$(echo "$outdated" | tail -$lc)
+        message=$(echo "$outdated" | head -5)
         if [ "$outdated" != "$message" ]; then
             message="Some of the outdated formulae are: $message"
         else
@@ -39,7 +38,7 @@ else
         fi
         # Send to the Nofication Center
         $TERMINAL_NOTIFIER $NOTIF_ARGS \
-        -title "Homebrew Auto Update" \
+            -title "Homebrew Auto Update" \
             -subtitle "Homebrew Update(s) Available" -message "$message"
     fi
 fi
